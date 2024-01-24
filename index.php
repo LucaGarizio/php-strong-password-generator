@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Password Generator</title>
+
+   
 </head>
 <body>
 <!-- Milestone 1
@@ -21,44 +23,41 @@ Gestire ulteriori parametri per la password: quali caratteri usare fra numeri, l
 <!-- Dare all'utente anche la possibilità di permettere o meno la ripetizione di caratteri uguali. -->
 
 <form>
-    <label for="number">Scegli la Lunghezza della tua password</label>
-    <input type="number" name="number" id="number">
+    <label for="number"></label>
+    <input type="number" name="number" id="number" placeholder="Digita la lunghezza della tua password">
     <button type="submit">Genera Password</button>
 </form>
 
 
 <?php
-if(isset($_GET['number'])){
-    $length = $_GET['number'];
-    
-} else{
-    $length = 0;
-}
 
-
-$password = createPassword($length);
-echo "La Tua password è: $password";
-
-
-function createPassword ($length) {
-    // crea un array vuoto per la password che verrà popolato attarverso il ciclo for 
-    $psw = array();
-    // stabilisci i caratteri che la password dovrà contenere
-    $characters = "0123456789abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ!@#$%^&*";
-
-    // cicla fino a quando non raggiunge la lunghezza stabilita dall'utente
-    for ($i = 0; $i < $length; $i++) { 
-        // prende un numero random di caratteri tra 0 e la lunghezza della stringa
-        $addRandom = rand(0, strlen($characters) - 1);
-        // Aggiungere il carattere corrispondente all'indice generato alla password
-        $password[] = $characters[$addRandom];
-    }
-    // unisci tutti i caratteri in una sola stringa e ritorna il valore
-    return implode($password);
-}
-
-
+require_once __DIR__ . "/functions.php";
 ?>
 
 </body>
+
+<style>
+
+    h2,
+    h3{
+        text-align: center;
+        margin-bottom: -10px;
+    }
+
+    form{
+        display:flex;
+        justify-content:center;
+        margin-top: 20px;
+    }
+    input{
+        padding: 5px;
+        width: 300px;
+        margin-right:20px;
+    }
+
+    button{
+        width: 150px;
+        padding:4px;
+    }
+</style>
 </html>
