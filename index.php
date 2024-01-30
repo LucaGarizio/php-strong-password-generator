@@ -35,6 +35,11 @@ Gestire ulteriori parametri per la password: quali caratteri usare fra numeri, l
 	</body>
 
 	<style>
+
+	body{
+		background-color: #333;
+	}
+
 		h2,
 		h3 {
 			text-align: center;
