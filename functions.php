@@ -1,22 +1,25 @@
 <?php
-if(isset($_GET['number'])){
-    $length = $_GET['number'];
+
+$lunghezza = $_GET['number'];
+
+
+if( $lunghezza < 5 ){
+       header('Location: error.php');
     
-} else{
-    $length = 0;
+} else {
+
+    $password = createPassword($lunghezza);
+
+    header('Location: success.php?password=' . $password);
 }
-
-
-$password = createPassword($length);
-echo '<h2>La Tua password è: </h2>';
-echo '<h3>' . $password . '</h3>';
-
 
 function createPassword ($length) {
     // crea un array vuoto per la password che verrà popolato attarverso il ciclo for 
     $psw = array();
     // stabilisci i caratteri che la password dovrà contenere
-    $characters = "0123456789abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ!@#$%^&*";
+    $characters = "0123456789abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ!@$%^*";
+
+    
 
     // cicla fino a quando non raggiunge la lunghezza stabilita dall'utente
     for ($i = 0; $i < $length; $i++) { 
